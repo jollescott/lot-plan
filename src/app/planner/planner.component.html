@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="period" *ngFor="let period of planner.periods">
+        <h3>Year {{period.year}} Period {{period.index}}</h3>
+        <h4> Credits: {{ period.courses | periodCredits }}</h4>
+
+        <lot-slot [index]="period.index" [year]="period.year" [course]="course"
+            *ngFor="let course of period.courses"></lot-slot>
+        <lot-slot [index]="period.index" [year]="period.year"></lot-slot>
+    </div>
+</div>

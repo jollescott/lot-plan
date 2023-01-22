@@ -1,0 +1,6 @@
+<mat-card *ngIf="course" draggable="true" (dragstart)="onDragStart($event)">
+  <mat-card-header>
+    <mat-card-subtitle>{{ course.courseCode }}: {{ course.credits }} HP</mat-card-subtitle>
+    <mat-card-title>{{ course.name }}</mat-card-title>
+  </mat-card-header>
+</mat-card>

@@ -1,0 +1,12 @@
+<div (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+  <lot-course-card [course]="course" *ngIf="course; else empty">
+  </lot-course-card>
+  <ng-template #empty>
+    <mat-card [style.backgroundColor]="targeted ? 'green' : 'initial'">
+      <mat-card-header>
+        <mat-card-title>Empty slot</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>Drag a course here.</mat-card-content>
+    </mat-card>
+  </ng-template>
+</div>
