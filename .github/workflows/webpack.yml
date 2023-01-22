@@ -5,6 +5,7 @@ on:
     branches: [ "main" ]
 
 permissions:
+  contents: read
   pages: write      
   id-token: write  
 
@@ -26,12 +27,13 @@ jobs:
 
     - name: Build
       run: |
-        npm install -g @angular/cli
         npm install
-        ng build --output-path ${{ steps.pages.outputs.base_path }}
+        npm run build
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
+      with:
+        path: ./dist
 
   deploy:
     needs: build
