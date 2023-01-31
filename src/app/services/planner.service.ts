@@ -45,8 +45,8 @@ export class PlannerService {
 
   constructor(private lot: LotService) { }
 
-  assignCourse(index: string, year: string, courseId: number) {
-    const course = this.lot.getCourses().find(c => c.courseId === courseId);
+  async assignCourse(index: string, year: string, courseId: number) {
+    const course = (await this.lot.getCourses('BME')).find(c => c.courseId === courseId);
 
     if (!course) {
       console.warn(`Course ${courseId} was not found`);

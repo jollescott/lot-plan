@@ -34,8 +34,14 @@ export class LotService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getCourses(): LotCourse[] {
-    return PLACEHOLDER_COURSES;
+  async getCourses(programmeCode: string): Promise<LotCourse[]> {
+    const coursesObservable = this.httpClient.get<LotCourse[]>(
+      `${this.LOT_ROOT}/lot/courses?programmeCode=${programmeCode}`
+    );
+
+    const courses = await firstValueFrom(coursesObservable);
+
+    return courses;
   }
 
   async getProgrammes(): Promise<LotProgramme[]> {
